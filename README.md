@@ -1,40 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pantheon Decoupled Kit Next Pantheon Content Cloud Starter
 
 ## Getting Started
 
-First, run the development server:
+To get started with the Next Pantheon Content Cloud Starter, use our `pcc`
+(command-line interface tool we have created). Full documentation for this npm
+package based on [npm init](https://docs.npmjs.com/cli/v8/commands/npm-init) can
+be found [here](https://www.npmjs.com/package/@pantheon-systems/pcc) on our docs
+site.
+
+## Deploy your own
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/fork/github/pantheon-systems/pantheon-content-cloud-sdk/tree/main/starters/nextjs-starter)
+
+For a quick start on your local machine, follow the instructions below:
+
+1. In your terminal, run the following commands:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install @pantheon-systems/pcc-cli --global
+pcc init ./my-new-site --template=nextjs
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Follow the prompts in your terminal to complete the setup.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Pantheon's @pantheon-systems/pcc-react-sdk
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Pantheon's @pantheon-systems/pcc-react-sdk is included as a dependency in this
+project.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Tests
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Tests are written with [`vitest`](https://vitest.dev/). All new functionality
+should have unit tests or snapshot tests where applicable. Snapshot tests are
+using
+[`@testing-library/react`](https://testing-library.com/docs/react-testing-library/intro/).
 
-## Learn More
+### Commands
 
-To learn more about Next.js, take a look at the following resources:
+This section assumes the package manager in use is `npm`. If you are not using
+`npm`, replace `npm` with the name of your package manager.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To run the tests:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+npm test
+```
 
-## Deploy on Vercel
+To run the tests in watch mode:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run test:watch
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Updating Snapshots
+
+Snapshots should be updated when presentational changes are made. If a new page
+route is added, create a new snapshot test for it, and include any data needed
+to run that test successfully. Please commit the updated snapshots along with
+your changes.
+
+To update a snapshot:
+
+Run the following helper command:
+
+```bash
+npm run update-snapshots
+```
+
+Or, run the test for a single profile in watch mode (see above), then in the
+terminal press the **u** key. This will update the snapshot for the running
+profile Be sure to update the snapshot for both profiles.
